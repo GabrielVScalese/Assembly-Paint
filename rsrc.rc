@@ -1,0 +1,18 @@
+// define recursos a serem utilizados pelo programa 
+
+#define MENU1 600
+
+MENU1 MENUEX MOVEABLE IMPURE LOADONCALL DISCARDABLE
+BEGIN
+    POPUP "&Menu", , , 0
+    BEGIN
+        MENUITEM "&Sair", 1000
+    END
+    POPUP "&Formas", , , 0
+    BEGIN
+        MENUITEM "&Retangulo", 1100
+        MENUITEM "&Circulo", 1200
+        MENUITEM "&Linha", 1300
+    END
+END
+
