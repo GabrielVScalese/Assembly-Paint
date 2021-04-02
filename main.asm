@@ -230,9 +230,7 @@ WndProc proc hWin   :DWORD,
     .elseif uMsg == WM_DESTROY
         invoke PostQuitMessage,NULL
         return 0 
-
-    .elseif uMsg == WM_PAINT
-        
+                
     .endif   
     invoke DefWindowProc,hWin,uMsg,wParam,lParam 
     ret
