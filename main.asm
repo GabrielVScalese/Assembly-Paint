@@ -46,7 +46,7 @@
         buffer        db 128 dup(0)
         X             dd 0
         Y             dd 0
-        opcao         db "l"
+        opcao         db "l" ; Representa a forma geometrica escolhida pelo usuario
 
 
 .data?
@@ -168,14 +168,19 @@ WndProc proc hWin   :DWORD,
             ;invoke SendMessage, hWin2, WM_SYSCOMMAND, SC_CLOSE, NULL
         .endif
 
+        ; Abaixo, as opcoes de escolha para forma geometrica
+        
+        ; Retangulo
         .if wParam == 1100
             mov opcao, "r"
         .endif
 
+        ; Circulo
         .if wParam == 1200
             mov opcao, "c"
         .endif
 
+        ; Linha
         .if wParam == 1300
             mov opcao, "l"
         .endif
@@ -196,14 +201,17 @@ WndProc proc hWin   :DWORD,
       ; invoke MoveToEx, hDC, 50,50,0
       invoke MoveToEx, hDC, hitpointEnd.x,hitpointEnd.y, 0
       
+      ; Se o usuario escolheu a linha
       .if opcao == "l"
           invoke LineTo, hDC, hitpoint.x, hitpoint.y ; tudo certo!!!
       .endif
 
+      ; Se o usuario escolheu o retangulo
       .if opcao == "r"
         invoke Rectangle, hDC, hitpointEnd.x, hitpoint.y, hitpoint.x, hitpointEnd.y ; tudo certo!!!
       .endif
 
+      ; Se o usuario escolheu o circulo
       .if opcao == "c"
         invoke Ellipse, hDC, hitpointEnd.x, hitpoint.y, hitpoint.x, hitpointEnd.y ; tudo certo!!!
       .endif
